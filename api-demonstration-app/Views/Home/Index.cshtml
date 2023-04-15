@@ -1,0 +1,31 @@
+﻿@model BaseResponse<api_demonstration_app.Models.Json.Certificate>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <br/>
+    <br/>
+    <br />
+    <form method='post'>
+        <p><input name='id' placeholder="Type id..." /></p>
+        <input type='submit' value='Get' />
+    </form>
+    <br />
+
+    @if(Model != null)
+    {
+        @if (Model.Success)
+        {
+            <div>Id:  @Model.Content.Data.Id</div> 
+            <div>Status: @Model.Content.Data.Status.Code</div>
+            <div>Name: @Model.Content.Data.Name</div>
+            <div>MdssUsername: @Model.Content.Data.MdssUsername</div>
+        }
+        else
+        {
+            @Model.Error
+        }
+    }
+
+</div>
