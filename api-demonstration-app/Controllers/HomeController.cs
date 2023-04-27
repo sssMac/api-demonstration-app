@@ -1,4 +1,5 @@
-﻿using api_demonstration_app.Models;
+﻿using api_demonstration_app.Helpers;
+using api_demonstration_app.Models;
 using api_demonstration_app.Models.Json;
 using api_demonstration_app.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -23,9 +24,10 @@ namespace api_demonstration_app.Controllers
 
 
 		[HttpPost]
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index(int id, IFormFile file)
         {
             var response = await _certificateService.GetCertificateData(id);
+			var test = RequestGenerate.GenerateXmltest();
 
             return View(response);
         }

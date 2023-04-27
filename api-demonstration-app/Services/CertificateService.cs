@@ -9,15 +9,12 @@ namespace api_demonstration_app.Services
 {
     public class CertificateService : ICertificateService
     {
-        private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuration;
         private readonly HttpClient _httpClient;
-        public CertificateService(IHttpClientFactory httpClientFactory, IConfiguration configuration)
+        public CertificateService(HttpClient httpClient, IConfiguration configuration)
         {
-            _httpClientFactory = httpClientFactory;
             _configuration = configuration;
-            _httpClient = _httpClientFactory.CreateClient();
-
+            _httpClient = httpClient;
         }
 
         // GET: generate JWT token
